@@ -8,8 +8,32 @@
     ],
     "rewrites": [
       {
+        "source": "/",
+        "destination": "/404.html"
+      }
+    ],
+    "headers": [
+      {
+        "source": "**/*.@(png|svg|xml|ico|webmanifest)",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "max-age=2592000"
+          }
+        ]
+      },
+      {
         "source": "**",
-        "destination": "/index.html"
+        "headers": [
+          {
+            "key": "Strict-Transport-Security",
+            "value": "max-age=31536000; includeSubDomains; preload"
+          },
+          {
+            "key": "X-Content-Type-Options",
+            "value": "nosniff"
+          }
+        ]
       }
     ]
   }
