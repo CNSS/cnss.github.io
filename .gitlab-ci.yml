@@ -1,0 +1,16 @@
+stages:
+- deploy
+
+deploy:
+  stage: deploy
+  image:
+    name: node:8-alpine
+    entrypoint: ash
+  script:
+  - npm install -g firebase-tools
+  - firebase deploy
+  environment:
+    name: production
+  only:
+  - tags
+
